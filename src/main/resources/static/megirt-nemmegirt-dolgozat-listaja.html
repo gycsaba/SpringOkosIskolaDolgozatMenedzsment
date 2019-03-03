@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<title>Megírt és nem megírt dolgozatok listája</title>
+</head>
+<body  onload="makeList()">
+<h1>Megírt és nem megírt dolgozatok listája!</h1>
+<p>Válassza ki, hogy melyik dolgozatokat akarja listázni!</p>
+<form>
+	<p>Válasszon:
+	<input type="radio" name="dolgozat" value="megirt" onclick="showMegirt();" />Megírt dolgozatok
+	<input type="radio" name="dolgozat" value="nemmegirt" onclick="showNemMegirt();" />Nem megírt dolgozatok
+</form>
+<div id="megirtDolgozatok">
+<h2>Megirt dolgozatok listája</h2>
+	<ul id="megirtDolgozatLista"></ul>
+</div>
+<div id="nemMegirtDolgozatok">
+<h2>Nem megirt dolgozatok listája</h2>
+	<ul id="nemMegirtDolgozatLista"></ul>
+</div>
+<a href="index.html">Vissza a nyitóoldalra...</a>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+function makeList()  {
+	fillMegirt();
+	fillNemMegirt();
+	$('#megirtDolgozatok').hide();
+	$('#nemMegirtDolgozatok').hide();
+}
+
+function showMegirt() {
+	$('#megirtDolgozatok').show();
+	$('#nemMegirtDolgozatok').hide();
+}
+
+function showNemMegirt() {
+	$('#megirtDolgozatok').hide();
+	$('#nemMegirtDolgozatok').show();
+}
+
+function fillMegirt(){
+	$.get( "/api/dolgozatlista/megirt", function( valasz) {
+		valasz.forEach(function (dolgozat) {
+			$("<li />").text(dolgozat.nev+ " dolgozat: " + dolgozat.leiras).appendTo('#megirtDolgozatLista');
+		});
+	});
+}
+function fillNemMegirt(){
+	$.get( "/api/dolgozatlista/nemmegirt", function( valasz) {
+		valasz.forEach(function (dolgozat) {
+			$("<li />").text(dolgozat.nev+ " dolgozat: " + dolgozat.leiras).appendTo('#nemMegirtDolgozatLista');
+		});
+	});  
+}
+</script>
+</body>
+</html>
