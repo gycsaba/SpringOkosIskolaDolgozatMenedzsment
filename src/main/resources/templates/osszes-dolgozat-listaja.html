@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Összes dolgozat listája</title>
+</head>
+<body>
+<h1>Dolgozatok listája:</h1>
+<table>
+<thead>
+  <th>Dolgozatok</th>
+  <th> - összes dolgozat</th>
+</thead>
+	<tr>
+		<td>
+			Dolgozat címe
+		</td>
+		<td>
+			Leírás
+		</td>
+		<td>
+			Megirva
+		</td>
+		<td>
+			Létrehozás dátuma
+		</td>
+		<td>
+			Dolgozatírás dátuma
+		</td>				
+	</tr>
+    <tr th:each="dolgozat: ${osszesDolgozatLista}"> 
+  		<td>
+  			<div class="nev" th:text="${dolgozat.nev}"></div>
+  		</td>
+  		<td>
+  			<div class="leiras" th:text="${dolgozat.leiras}"></div>
+  		</td>
+  		<td>
+  			<div class="megirva" th:text="${dolgozat.megirva}"></div>
+  		</td>
+  		<td>
+  			<div class="letrehozasDatuma" th:text="${dolgozat.letrehozasDatuma}"></div>
+  		</td>
+  		<td>
+  			<div class="dolgozatirasDatuma" th:text="${dolgozat.dolgozatirasDatuma}"></div>
+  		</td>
+  </tr>  
+</thead>
+</table>
+<a href="index.html">Vissza a nyitóoldalra...</a>
+</body>
+</html>

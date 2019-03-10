@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Nem megírt dolgozatok - időpont változtatás</title>
+</head>
+<body>
+<h1>Nem megírt dolgozatok - időpont változtatás</h1>
+<table>
+<thead>
+  <th>Dolgozatok</th>
+  <th> - nem megírt dolgozatok</th>
+</thead>
+	<tr>
+		<td>
+			Dolgozat címe
+		</td>
+		<td>
+			Leírás
+		</td>		
+		<td>
+			Dolgozatírás dátuma
+		</td>				
+	</tr>
+    <tr th:each="dolgozat: ${nemMegirtDolgozatokLista}"> 
+  		<td>
+  			<div class="nev"><a th:href="@{/dolgozat/{id}/(id=${dolgozat.id})}" th:text="${dolgozat.nev}"></a></div>
+  		</td>
+  		<td>
+  			<div class="leiras" th:text="${dolgozat.leiras}"></div>
+  		</td>  		
+  		<td>
+  			<div class="dolgozatirasDatuma" th:text="${dolgozat.dolgozatirasDatuma}"></div>
+  		</td>
+  </tr>  
+</thead>
+</table>
+<a href="index.html">Vissza a nyitóoldalra...</a>
+
+</body>
+</html>

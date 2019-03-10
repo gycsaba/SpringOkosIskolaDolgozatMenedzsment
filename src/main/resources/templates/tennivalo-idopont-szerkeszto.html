@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Dolgozat időpontjának szerkesztése</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/stilusok.css}" />
+</head>
+<body>
+<h1>Dolgozat időpontjának szerkesztése</h1>
+	<form method="post" th:action="@{/dolgozat-idopont-modosit/}" th:object="${dolgozat}">
+		<input type="hidden" th:field="*{id}">
+		<input type="hidden" th:field="*{nev}">
+		<input type="hidden" th:field="*{leiras}">
+		<input type="hidden" th:field="*{megirva}">
+		<input type="hidden" th:field="*{letrehozasDatuma}">
+		<p>A dolgozat címe: <span class="nev" th:text="*{nev}"></span></p>		
+		<div>
+			<label>Időpont:</label> <input type="text" th:field="*{dolgozatirasDatuma}"  th:errorclass="mezoHiba" />
+			<span th:if="${#fields.hasErrors('dolgozatirasDatuma')}" th:errors="*{dolgozatirasDatuma}" class="hibauzenet"></span>
+		
+		</div>		
+		<button type="submit">Módosít</button>
+</form>
+</body>
+</html>
