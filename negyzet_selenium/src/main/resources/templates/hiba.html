@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Hibaüzenet!</title>
+</head>
+<body>
+	<h1>Hiba történt!</h1>
+	<p>A négyzet területszámítása közben a következő hiba történt: </p>
+	<p><span th:text="${hibauzenet}"></span> </p>
+	<p><a href="index.html">Vissza</a>
+</body>
+</html>
